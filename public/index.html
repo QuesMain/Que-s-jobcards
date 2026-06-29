@@ -1,17 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#111827" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="QUE'S Job Card" />
-    <meta name="description" content="QUE'S Job Card Application" />
-    <title>QUE'S Job Card</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="QUE'S Job Card" />
+  <title>QUE'S Job Card</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f3f4f6; padding: 16px; }
+    input, textarea, button { font-family: inherit; }
+
+    .action-bar { display: flex; gap: 12px; margin-bottom: 16px; justify-content: flex-end; }
+    .btn { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .btn-black { background: #111827; color: #fff; }
+    .btn-gray { background: #374151; color: #fff; }
+
+    .card { background: #fff; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); padding: 24px 28px; max-width: 900px; margin: 0 auto; }
+
+    .header { border-bottom: 2px solid #111827; padding-bottom: 16px; margin-bottom: 24px; }
+    .header-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .logo { font-size: 36px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+    .logo-sub { font-size: 12px; color: #374151; font-weight: 500; }
+    .address { font-size: 11px; color: #374151; line-height: 1.6; text-align: center; flex: 1; }
+    .address-divider { margin-top: 6px; padding-top: 6px; border-top: 1px solid #e5e7eb; }
+    .job-num { text-align: right; }
+    .job-num-val { font-size: 22px; font-weight: 700; letter-spacing: 1px; color: #111827; }
+    .job-num-label { font-size: 11px; color: #6b7280; font-weight: 500; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+    .col { display: flex; flex-direction: column; gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+    label.field-label { display: block; font-size: 11px; font-weight: 700; color: #111827; margin-bottom: 4px; letter-spacing: 0.05em; }
+    .field-input { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; color: #111827; background: #fff; outline: none; -webkit-appearance: none; appearance: none; }
+    .field-input:focus { border-color: #111827; box-shadow: 0 0 0 2px rgba(17,24,39,0.15); }
+    textarea.field-input { resize: none; }
+
+    .checkbox-row { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+    .checkbox-box { width: 18px; height: 18px; min-width: 18px; border: 2px solid #9ca3af; border-radius: 3px; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background 0.1s, border-color 0.1s; }
+    .checkbox-box.checked { background: #111827; border-color: #111827; }
+    .checkbox-box svg { display: none; }
+    .checkbox-box.checked svg { display: block; }
+    .checkbox-label { font-size: 11px; font-weight: 600; color: #111827; }
+
+    .parts-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .parts-table th { padding: 8px 12px; text-align: left; font-weight: 700; background: #f9fafb; border-bottom: 1px solid #d1d5db; }
+    .parts-table td { padding: 6px 8px; border-bottom: 1px solid #e5e7eb; }
+    .table-wrap { overflow-x: auto; border: 1px solid #d1d5db; border-radius: 6px; }
+    .table-input { width: 100%; padding: 4px 6px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 12px; -webkit-appearance: none; appearance: none; background: #fff; font-family: inherit; }
+    .table-input:focus { border-color: #111827; outline: none; }
+
+    .sig-area { border-top: 2px solid #111827; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #9ca3af; margin-top: 12px; }
+    .sig-section { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 16px; border-top: 1px solid #d1d5db; }
+
+    .footer { margin-top: 16px; text-align: center; font-size: 12px; color: #6b7280; }
+    .add-row-btn { margin-top: 8px; padding: 4px 12px; font-size: 12px; font-weight: 500; background: #e5e7eb; border: none; border-radius: 4px; cursor: pointer; font-family: inherit; }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .no-print { display: none !important; }
+      .card { box-shadow: none !important; border-radius: 0 !important; }
+      .footer { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Action Bar -->
+  <div class="action-bar no-print">
+    <button class="btn btn-black" onclick="window.print()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Save as PDF
+    </button>
+    <button class="btn btn-gray" onclick="newCard()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+      New Card
+    </button>
+  </div>
+
+  <!-- Job Card -->
+  <div class="card">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-inner">
+        <div>
+          <div class="logo">QUE'S</div>
+          <div class="logo-sub">Maintenance Services</div>
+        </div>
+        <div class="address">
+          Postnet Suite 027, Po Box 28004, Sunridge<br>
+          Port Elizabeth, Eastern Cape, 6008, South Africa
+          <div class="address-divider">
+            Cell: +27 (0) 71 873 1503 &nbsp;|&nbsp; Fax: +27 (0) 86 621 9355 &nbsp;|&nbsp; Email: ques.me@gmail.com
+          </div>
+        </div>
+        <div class="job-num">
+          <div class="job-num-val" id="jobNumber">QJC-4000</div>
+          <div class="job-num-label">JOB CARD</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two Column -->
+    <div class="two-col">
+      <!-- Left -->
+      <div class="col">
+        <div>
+          <label class="field-label">DATE</label>
+          <input type="date" id="date" class="field-input" />
+        </div>
+        <div class="grid-2">
+          <div>
+            <label class="field-label">SAP NUMBER</label>
+            <input type="text" id="sapNumber" class="field-input" placeholder="SAP #" />
+          </div>
+          <div>
+            <label class="field-label">AF NUMBER</label>
+            <input type="text" id="afNumber" class="field-input" placeholder="AF #" />
+          </div>
+        </div>
+        <div>
+          <label class="field-label">CLIENT</label>
+          <textarea id="client" class="field-input" rows="3" placeholder="Client details..."></textarea>
+        </div>
+        <div>
+          <label class="field-label">LOCATION</label>
+          <textarea id="location" class="field-input" rows="2" placeholder="Job location..."></textarea>
+        </div>
+        <div>
+          <label class="field-label">REQUIREMENT</label>
+          <textarea id="requirement" class="field-input" rows="2" placeholder="Job requirement..."></textarea>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="col">
+        <div class="grid-2">
+          <div>
+            <label class="field-label">ARRIVAL</label>
+            <input type="time" id="arrivalTime" class="field-input" />
+          </div>
+          <div>
+            <label class="field-label">DEPARTURE</label>
+            <input type="time" id="departureTime" class="field-input" />
+          </div>
+        </div>
+        <div class="grid-2">
+          <div>
+            <label class="field-label">HOURS WORKED</label>
+            <input type="number" id="hoursWorked" class="field-input" placeholder="0" step="0.5" />
+          </div>
+          <div>
+            <label class="field-label">MILEAGE</label>
+            <input type="number" id="mileage" class="field-input" placeholder="0" />
+          </div>
+        </div>
+
+        <div>
+          <label class="field-label" style="margin-bottom:8px">DAY OF WEEK</label>
+          <div class="grid-4" id="daysOfWeek"></div>
+        </div>
+
+        <div>
+          <label class="field-label" style="margin-bottom:8px">SERVICE TYPE</label>
+          <div class="grid-2-col" id="serviceTypes"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work Description -->
+    <div style="margin-bottom:24px">
+      <label class="field-label" style="margin-bottom:6px">DESCRIPTION OF WORK DONE</label>
+      <textarea id="workNotes" class="field-input" rows="3" placeholder="Describe the overall work completed..." style="margin-bottom:16px"></textarea>
+
+      <label class="field-label" style="margin-bottom:6px">PARTS USED</label>
+      <div class="table-wrap">
+        <table class="parts-table">
+          <thead>
+            <tr>
+              <th>PART DESCRIPTION</th>
+              <th style="width:100px">PART NO</th>
+              <th style="width:70px">QTY</th>
+            </tr>
+          </thead>
+          <tbody id="partsBody"></tbody>
+        </table>
+      </div>
+      <button class="add-row-btn no-print" onclick="addRow()">+ Add Row</button>
+    </div>
+
+    <!-- Signatures -->
+    <div class="sig-section">
+      <div>
+        <label class="field-label">TECHNICIAN'S NAME</label>
+        <input type="text" id="techName" class="field-input" placeholder="Enter name..." />
+        <div class="sig-area">Signature</div>
+      </div>
+      <div>
+        <label class="field-label">CUSTOMER NAME</label>
+        <input type="text" id="custName" class="field-input" placeholder="Enter name..." />
+        <div class="sig-area">Signature</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer no-print">Job numbers auto-increment. Tap "New Card" for the next job.</div>
+
+<script>
+  const DAYS = ['MON','TUES','WED','THUR','FRI','SAT','SUN','N/T','O/T'];
+  const SERVICES = [
+    {label:'DELIVERY',id:'delivery'},
+    {label:'COURTESY CALL',id:'courtesy'},
+    {label:'INSTALLATION',id:'installation'},
+    {label:'WORKSHOP',id:'workshop'},
+    {label:'BREAKDOWN',id:'breakdown'},
+    {label:'PLANNED MAINT',id:'plannedMaint'},
+    {label:'WARRANTY',id:'warranty'},
+    {label:'OTHER',id:'other'}
+  ];
+
+  let selectedDays = [];
+  let selectedServices = [];
+
+  function genJobNumber() {
+    let counter = parseInt(localStorage.getItem('quesJobCounter') || '3999', 10);
+    counter += 1;
+    localStorage.setItem('quesJobCounter', String(counter));
+    return 'QJC-' + counter;
+  }
+
+  function makeCheckbox(value, container, selectedArr, onChange) {
+    const row = document.createElement('div');
+    row.className = 'checkbox-row';
+    const box = document.createElement('div');
+    box.className = 'checkbox-box';
+    box.innerHTML = '<svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const lbl = document.createElement('span');
+    lbl.className = 'checkbox-label';
+    lbl.textContent = value;
+    row.appendChild(box);
+    row.appendChild(lbl);
+    row.addEventListener('click', function() {
+      const idx = selectedArr.indexOf(value);
+      if (idx > -1) { selectedArr.splice(idx, 1); box.classList.remove('checked'); }
+      else { selectedArr.push(value); box.classList.add('checked'); }
+    });
+    container.appendChild(row);
+  }
+
+  function buildCheckboxes() {
+    const daysEl = document.getElementById('daysOfWeek');
+    const servEl = document.getElementById('serviceTypes');
+    daysEl.innerHTML = '';
+    servEl.innerHTML = '';
+    DAYS.forEach(d => makeCheckbox(d, daysEl, selectedDays));
+    SERVICES.forEach(s => makeCheckbox(s.label, servEl, selectedServices));
+  }
+
+  function addRow() {
+    const tbody = document.getElementById('partsBody');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="text" class="table-input" placeholder="Part description..." /></td>
+      <td><input type="text" class="table-input" placeholder="Part #" /></td>
+      <td><input type="number" class="table-input" placeholder="0" /></td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  function newCard() {
+    document.getElementById('jobNumber').textContent = genJobNumber();
+    document.getElementById('date').value = new Date().toISOString().split('T')[0];
+    ['sapNumber','afNumber','client','location','requirement','arrivalTime',
+     'departureTime','hoursWorked','mileage','workNotes','techName','custName']
+      .forEach(id => document.getElementById(id).value = '');
+    selectedDays.length = 0;
+    selectedServices.length = 0;
+    document.querySelectorAll('.checkbox-box').forEach(b => b.classList.remove('checked'));
+    const tbody = document.getElementById('partsBody');
+    tbody.innerHTML = '';
+    for (let i = 0; i < 5; i++) addRow();
+  }
+
+  // Init
+  document.getElementById('jobNumber').textContent = genJobNumber();
+  document.getElementById('date').value = new Date().toISOString().split('T')[0];
+  buildCheckboxes();
+  for (let i = 0; i < 5; i++) addRow();
+</script>
+</body>
 </html>
