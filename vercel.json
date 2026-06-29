@@ -1,6 +1,9 @@
 {
-  "framework": "create-react-app",
-  "buildCommand": "npm run build",
-  "devCommand": "npm run start",
-  "outputDirectory": "build"
+  "version": 2,
+  "builds": [
+    { "src": "public/index.html", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/public/index.html" }
+  ]
 }
