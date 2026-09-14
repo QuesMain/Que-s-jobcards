@@ -106,7 +106,7 @@
           </div>
         </div>
         <div class="job-num">
-          <div class="job-num-val" id="jobNumber">QJC-4030</div>
+          <div class="job-num-val" id="jobNumber">QJC-4000</div>
           <div class="job-num-label">JOB CARD</div>
         </div>
       </div>
@@ -242,7 +242,7 @@
   });
 
   function genJobNumber() {
-    let counter = parseInt(localStorage.getItem('quesJobCounter') || '3999', 10);
+    let counter = parseInt(localStorage.getItem('quesJobCounter') || '4049', 10);
     counter += 1;
     localStorage.setItem('quesJobCounter', String(counter));
     return 'QJC-' + counter;
