@@ -17,56 +17,60 @@
     .btn-black { background: #111827; color: #fff; }
     .btn-gray { background: #374151; color: #fff; }
 
-    .card { background: #fff; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); padding: 24px 28px; max-width: 900px; margin: 0 auto; }
+    .card { background: #fff; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); padding: 20px 24px; max-width: 900px; margin: 0 auto; }
 
-    .header { border-bottom: 2px solid #111827; padding-bottom: 16px; margin-bottom: 24px; }
+    .header { border-bottom: 2px solid #111827; padding-bottom: 12px; margin-bottom: 16px; }
     .header-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
-    .logo { font-size: 36px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
-    .logo-sub { font-size: 12px; color: #374151; font-weight: 500; }
-    .address { font-size: 11px; color: #374151; line-height: 1.6; text-align: center; flex: 1; }
-    .address-divider { margin-top: 6px; padding-top: 6px; border-top: 1px solid #e5e7eb; }
+    .logo { font-size: 32px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+    .logo-sub { font-size: 11px; color: #374151; font-weight: 500; }
+    .address { font-size: 10px; color: #374151; line-height: 1.5; text-align: center; flex: 1; }
+    .address-divider { margin-top: 4px; padding-top: 4px; border-top: 1px solid #e5e7eb; }
     .job-num { text-align: right; }
-    .job-num-val { font-size: 22px; font-weight: 700; letter-spacing: 1px; color: #111827; }
-    .job-num-label { font-size: 11px; color: #6b7280; font-weight: 500; }
+    .job-num-val { font-size: 20px; font-weight: 700; letter-spacing: 1px; color: #111827; }
+    .job-num-label { font-size: 10px; color: #6b7280; font-weight: 500; }
 
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 16px; }
     @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
 
-    .col { display: flex; flex-direction: column; gap: 16px; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .col { display: flex; flex-direction: column; gap: 10px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 
-    label.field-label { display: block; font-size: 11px; font-weight: 700; color: #111827; margin-bottom: 4px; letter-spacing: 0.05em; }
-    .field-input { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; color: #111827; background: #fff; outline: none; -webkit-appearance: none; appearance: none; }
+    label.field-label { display: block; font-size: 10px; font-weight: 700; color: #111827; margin-bottom: 3px; letter-spacing: 0.05em; }
+    .field-input { width: 100%; padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; color: #111827; background: #fff; outline: none; -webkit-appearance: none; appearance: none; }
     .field-input:focus { border-color: #111827; box-shadow: 0 0 0 2px rgba(17,24,39,0.15); }
-    textarea.field-input { resize: none; }
+    textarea.field-input { resize: none; overflow: hidden; min-height: 36px; }
 
-    .checkbox-row { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
-    .checkbox-box { width: 18px; height: 18px; min-width: 18px; border: 2px solid #9ca3af; border-radius: 3px; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background 0.1s, border-color 0.1s; }
+    .checkbox-row { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+    .checkbox-box { width: 16px; height: 16px; min-width: 16px; border: 2px solid #9ca3af; border-radius: 3px; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background 0.1s, border-color 0.1s; }
     .checkbox-box.checked { background: #111827; border-color: #111827; }
     .checkbox-box svg { display: none; }
     .checkbox-box.checked svg { display: block; }
-    .checkbox-label { font-size: 11px; font-weight: 600; color: #111827; }
+    .checkbox-label { font-size: 10px; font-weight: 600; color: #111827; }
 
-    .parts-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-    .parts-table th { padding: 8px 12px; text-align: left; font-weight: 700; background: #f9fafb; border-bottom: 1px solid #d1d5db; }
-    .parts-table td { padding: 6px 8px; border-bottom: 1px solid #e5e7eb; }
+    .parts-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .parts-table th { padding: 6px 10px; text-align: left; font-weight: 700; background: #f9fafb; border-bottom: 1px solid #d1d5db; }
+    .parts-table td { padding: 4px 6px; border-bottom: 1px solid #e5e7eb; }
     .table-wrap { overflow-x: auto; border: 1px solid #d1d5db; border-radius: 6px; }
-    .table-input { width: 100%; padding: 4px 6px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 12px; -webkit-appearance: none; appearance: none; background: #fff; font-family: inherit; }
+    .table-input { width: 100%; padding: 3px 5px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 11px; -webkit-appearance: none; appearance: none; background: #fff; font-family: inherit; overflow: hidden; resize: none; }
     .table-input:focus { border-color: #111827; outline: none; }
 
-    .sig-area { border-top: 2px solid #111827; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #9ca3af; margin-top: 12px; }
-    .sig-section { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 16px; border-top: 1px solid #d1d5db; }
+    .sig-area { border-top: 2px solid #111827; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #9ca3af; margin-top: 10px; }
+    .sig-section { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 12px; border-top: 1px solid #d1d5db; }
 
     .footer { margin-top: 16px; text-align: center; font-size: 12px; color: #6b7280; }
-    .add-row-btn { margin-top: 8px; padding: 4px 12px; font-size: 12px; font-weight: 500; background: #e5e7eb; border: none; border-radius: 4px; cursor: pointer; font-family: inherit; }
+    .add-row-btn { margin-top: 6px; padding: 3px 10px; font-size: 11px; font-weight: 500; background: #e5e7eb; border: none; border-radius: 4px; cursor: pointer; font-family: inherit; }
 
     @media print {
-      body { background: white; padding: 0; }
+      @page { size: A4; margin: 8mm; }
+      body { background: white; padding: 0; margin: 0; }
       .no-print { display: none !important; }
-      .card { box-shadow: none !important; border-radius: 0 !important; }
+      .card { box-shadow: none !important; border-radius: 0 !important; padding: 10px 14px; }
       .footer { display: none; }
+      .two-col { gap: 12px; margin-bottom: 10px; }
+      .col { gap: 7px; }
+      .header { margin-bottom: 10px; padding-bottom: 8px; }
     }
   </style>
 </head>
@@ -102,7 +106,7 @@
           </div>
         </div>
         <div class="job-num">
-          <div class="job-num-val" id="jobNumber">QJC-4000</div>
+          <div class="job-num-val" id="jobNumber">QJC-4030</div>
           <div class="job-num-label">JOB CARD</div>
         </div>
       </div>
@@ -128,15 +132,11 @@
         </div>
         <div>
           <label class="field-label">CLIENT</label>
-          <textarea id="client" class="field-input" rows="3" placeholder="Client details..."></textarea>
-        </div>
-        <div>
-          <label class="field-label">LOCATION</label>
-          <textarea id="location" class="field-input" rows="2" placeholder="Job location..."></textarea>
+          <textarea id="client" class="field-input auto-resize" rows="1" placeholder="Client details..."></textarea>
         </div>
         <div>
           <label class="field-label">REQUIREMENT</label>
-          <textarea id="requirement" class="field-input" rows="2" placeholder="Job requirement..."></textarea>
+          <textarea id="requirement" class="field-input auto-resize" rows="1" placeholder="Job requirement..."></textarea>
         </div>
       </div>
 
@@ -164,30 +164,30 @@
         </div>
 
         <div>
-          <label class="field-label" style="margin-bottom:8px">DAY OF WEEK</label>
+          <label class="field-label" style="margin-bottom:6px">DAY OF WEEK</label>
           <div class="grid-4" id="daysOfWeek"></div>
         </div>
 
         <div>
-          <label class="field-label" style="margin-bottom:8px">SERVICE TYPE</label>
+          <label class="field-label" style="margin-bottom:6px">SERVICE TYPE</label>
           <div class="grid-2-col" id="serviceTypes"></div>
         </div>
       </div>
     </div>
 
     <!-- Work Description -->
-    <div style="margin-bottom:24px">
-      <label class="field-label" style="margin-bottom:6px">DESCRIPTION OF WORK DONE</label>
-      <textarea id="workNotes" class="field-input" rows="3" placeholder="Describe the overall work completed..." style="margin-bottom:16px"></textarea>
+    <div style="margin-bottom:16px">
+      <label class="field-label" style="margin-bottom:4px">DESCRIPTION OF WORK DONE</label>
+      <textarea id="workNotes" class="field-input auto-resize" rows="2" placeholder="Describe the overall work completed..." style="margin-bottom:12px"></textarea>
 
-      <label class="field-label" style="margin-bottom:6px">PARTS USED</label>
+      <label class="field-label" style="margin-bottom:4px">PARTS USED</label>
       <div class="table-wrap">
         <table class="parts-table">
           <thead>
             <tr>
               <th>PART DESCRIPTION</th>
               <th style="width:100px">PART NO</th>
-              <th style="width:70px">QTY</th>
+              <th style="width:60px">QTY</th>
             </tr>
           </thead>
           <tbody id="partsBody"></tbody>
@@ -230,6 +230,17 @@
   let selectedDays = [];
   let selectedServices = [];
 
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  document.addEventListener('input', function(e) {
+    if (e.target.classList.contains('auto-resize') || e.target.classList.contains('table-input')) {
+      autoResize(e.target);
+    }
+  });
+
   function genJobNumber() {
     let counter = parseInt(localStorage.getItem('quesJobCounter') || '3999', 10);
     counter += 1;
@@ -237,12 +248,12 @@
     return 'QJC-' + counter;
   }
 
-  function makeCheckbox(value, container, selectedArr, onChange) {
+  function makeCheckbox(value, container, selectedArr) {
     const row = document.createElement('div');
     row.className = 'checkbox-row';
     const box = document.createElement('div');
     box.className = 'checkbox-box';
-    box.innerHTML = '<svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    box.innerHTML = '<svg width="10" height="8" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     const lbl = document.createElement('span');
     lbl.className = 'checkbox-label';
     lbl.textContent = value;
@@ -269,7 +280,7 @@
     const tbody = document.getElementById('partsBody');
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td><input type="text" class="table-input" placeholder="Part description..." /></td>
+      <td><textarea class="table-input auto-resize" rows="1" placeholder="Part description..."></textarea></td>
       <td><input type="text" class="table-input" placeholder="Part #" /></td>
       <td><input type="number" class="table-input" placeholder="0" /></td>
     `;
@@ -279,22 +290,26 @@
   function newCard() {
     document.getElementById('jobNumber').textContent = genJobNumber();
     document.getElementById('date').value = new Date().toISOString().split('T')[0];
-    ['sapNumber','afNumber','client','location','requirement','arrivalTime',
+    ['sapNumber','afNumber','client','requirement','arrivalTime',
      'departureTime','hoursWorked','mileage','workNotes','techName','custName']
-      .forEach(id => document.getElementById(id).value = '');
+      .forEach(id => {
+        const el = document.getElementById(id);
+        el.value = '';
+        if (el.classList.contains('auto-resize')) autoResize(el);
+      });
     selectedDays.length = 0;
     selectedServices.length = 0;
     document.querySelectorAll('.checkbox-box').forEach(b => b.classList.remove('checked'));
     const tbody = document.getElementById('partsBody');
     tbody.innerHTML = '';
-    for (let i = 0; i < 5; i++) addRow();
+    for (let i = 0; i < 3; i++) addRow();
   }
 
   // Init
   document.getElementById('jobNumber').textContent = genJobNumber();
   document.getElementById('date').value = new Date().toISOString().split('T')[0];
   buildCheckboxes();
-  for (let i = 0; i < 5; i++) addRow();
+  for (let i = 0; i < 3; i++) addRow();
 </script>
 </body>
 </html>
